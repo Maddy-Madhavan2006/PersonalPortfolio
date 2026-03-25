@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Madhavan | Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
+  <!-- Animate.css for section animations -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <!-- Lottie Player -->
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <img src="https://www.shutterstock.com/image-vector/illustration-smiling-young-man-brown-600nw-2575185307.jpg" alt="Madhavan" />
+      <h3 class="head">Maddy</h3>
+    </div>
+
+    <!-- Responsive Navbar -->
+    <nav class="navigation">
+      <div class="menu-toggle" id="mobile-menu">&#8942;</div> <!-- Three-dot button -->
+      <div class="nav-links">
+        <a href="#introduction">Home</a>
+        <a href="#aboutme">About Me</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Introduction -->
+  <section class="introduction wow animate__animated animate__fadeInUp" id="introduction">
+    <div class="video-container">
+      <video class="intro-video" autoplay muted loop>
+        <source src="img/intro.mp4" type="video/mp4" />
+      </video>
+    </div>
+
+    <div class="intro-content">
+      <div class="intro-text">
+        <h1>Welcome to my Portfolio,</h1>
+       <!-- <h2>I'm Madhavan</h2>-->
+         <p>
+          Hello! I'm Madhavan, a passionate web developer and designer. This is
+          my personal portfolio where I showcase my projects and skills.
+        </p>
+        <p class="into-line">
+          I'm into <span class="typing-text" id="typing"></span>
+        </p>
+       
+      </div>
+      <div class="intro-image">
+        <img src="https://www.shutterstock.com/image-vector/illustration-smiling-young-man-brown-600nw-2575185307.jpg" alt="Madhavan" />
+      </div>
+    </div>
+  </section>
+
+  <!-- About Me -->
+  <section class="aboutme wow animate__animated animate__fadeInUp" id="aboutme">
+    <div class="lottie-container">
+      <lottie-player 
+        id="aboutLottie"
+        src="img/E V E.json"
+        background="transparent"
+        speed="1"
+        style="width: 250px; height: 250px;"
+        loop
+        autoplay>
+      </lottie-player>
+    </div>
+
+    <div class="aboutme-content">
+      <h2>About Me</h2>
+      <p>
+        I'm a creative web developer who loves turning ideas into digital
+        experiences. Whether it's a sleek front-end design or efficient backend
+        logic, I aim to build user-focused, impactful web applications.
+      </p>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section class="skills wow animate__animated animate__fadeInUp" id="skills">
+    <h2>Skills</h2>
+    <div class="skills-grid">
+      <div class="skill"><img src="img/html.svg" alt="HTML" /><p>HTML</p></div>
+      <div class="skill"><img src="img/css.svg" alt="CSS" /><p>CSS</p></div>
+      <div class="skill"><img src="img/js.svg" alt="JavaScript" /><p>JavaScript</p></div>
+      <div class="skill"><img src="img/react.svg" alt="React" /><p>React</p></div>
+      <div class="skill"><img src="img/nodejs.svg" alt="Node.js" /><p>Node.js</p></div>
+      <div class="skill"><img src="img/java.svg" alt="Java" /><p>Java</p></div>
+      <div class="skill"><img src="img/python.svg" alt="Python" /><p>Python</p></div>
+      <div class="skill"><img src="img/cpp.svg" alt="C++" /><p>C++</p></div>
+      <div class="skill"><img src="img/c.svg" alt="C" /><p>C</p></div>
+      <div class="skill"><img src="img/dart.svg" alt="Dart" /><p>Dart</p></div>
+      <!--<div class="skill"><img src="img/sql.svg" alt="SQL" /><p>SQL</p></div>-->
+      <div class="skill"><img src="img/php.svg" alt="PHP" /><p>PHP</p></div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section class="projects wow animate__animated animate__fadeInUp" id="projects">
+    <h2>Projects</h2>
+    <div class="projects-grid">
+      <a href="https://lets-donate-lhkv.vercel.app/" target="_blank" class="project-card">
+        <img src="img/letsdonate.png" alt="Project 1" />
+        <div class="project-info">
+          <h3>Let's Donate</h3>
+          <p>A Blood Donating website made with React, CSS, Node.js.</p>
+        </div>
+      </a>
+      <a href="#" target="_blank" class="project-card">
+        <img src="img/portfolio.png" alt="Portfolio" />
+        <div class="project-info">
+          <h3>Portfolio</h3>
+          <p>A Responsive portfolio for devlopers built using  html,css,js.</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact wow animate__animated animate__fadeInUp" id="contact">
+    <h2>To Contact </h2>
+    <form>
+      <input type="text" id="name" placeholder="Your Name" required />
+      <input type="email" id="email" placeholder="Your Email" required />
+      <input type="number" id="phone" placeholder="Your Contact Number" />
+      <textarea id="message" rows="4" placeholder="What's Your Need" required></textarea>
+      <button type="submit">Contact Me</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <p class="footer-tagline">Let's Connect</p>
+      <div class="social-links">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href=""><i class="fab fa-instagram"></i></a>
+        <a href=""><i class="fab fa-linkedin-in"></i></a>
+        <a href=""><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+    <p>&copy; 2025 Madhavan. All rights reserved.</p>
+  </footer>
+
+  <!-- Typing Effect -->
+  <script src="JS/typing.js"></script>
+  <script src="JS/script.js"></script>
+
+  <!-- WOW.js for section animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+  <script>
+    new WOW().init();
+  </script>
+</body>
+</html>
