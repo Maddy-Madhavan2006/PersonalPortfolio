@@ -2,9 +2,9 @@
 
 // The words that will be typed in sequence
 const words = [
-  "Web Development",
-  "App Development",
-  "UI/UX Design",
+  "Front-End Development",
+  "Back-End Development",
+  "Full-Stack Development",
   "Free Lancing",
 ];
 

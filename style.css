@@ -1,3 +1,16 @@
+:root {
+  --bg-main: #0d1117;        /* GitHub dark (clean) */
+  --bg-secondary: #161b22;   /* section background */
+  --card-bg: #1c2128;        /* cards */
+
+  --text-main: #e6edf3;      /* bright readable text */
+  --text-secondary: #9da7b3; /* softer text */
+
+  --accent: #00ffae;         /* neon green */
+  --accent2: #3b82f6;        /* blue highlight */
+
+  --border: #30363d;         /* subtle borders */
+}
 /* === Global Styles === */
 * {
   box-sizing: border-box;
@@ -7,8 +20,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Poppins", sans-serif;
-  background: #0a192f;
-  color: #ccd6f6;
+  background: var(--bg-main);
+  color: var(--text-main);
   scroll-behavior: smooth;
   line-height: 1.6;
 }
@@ -24,7 +37,7 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 15px 5%;
-  background-color: #112240;
+  background-color: var(--bg-secondary);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 .logo {
@@ -49,7 +62,7 @@ header {
 }
 .navigation a {
   flex-wrap: wrap;
-  color: #ccd6f6;
+  color: var(--text-main);
   text-decoration: none;
   margin: 0 12px;
   font-weight: 500;
@@ -85,6 +98,7 @@ section {
   clear: both;
   opacity: 0;
   transform: translateY(40px);
+  scroll-margin-top: 100px;
   transition: all 0.8s ease-out;
 }
 section.visible {
@@ -187,7 +201,7 @@ section.visible .intro-content {
 }
 .intro-text p:not(.into-line) {
   font-size: 22px;
-  color: #ccd6f6;
+  color: var(--text-main);
   margin-top: 15px;
 }
 .intro-image img {
@@ -201,7 +215,7 @@ section.visible .intro-content {
 
 /* === About Me === */
 .aboutme {
-  background: #112240;
+  background: var(--bg-secondary);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -226,7 +240,7 @@ section.visible .aboutme {
   margin-bottom: 15px;
 }
 .aboutme p {
-  color: #a8b2d1;
+  color: var(--text-secondary);
   font-size: 16px;
   line-height: 1.6;
   max-width: 550px;
@@ -244,6 +258,7 @@ section.visible .aboutme {
 }
 
 /* === Skills === */
+/* === Skills Section Updated === */
 .skills {
   text-align: center;
   padding: 60px 40px;
@@ -260,19 +275,32 @@ section.visible .skills {
   font-size: 26px;
   margin-bottom: 30px;
 }
+.skill-category {
+  margin: 40px 0 20px;  /* spacing between categories */
+  font-size: 22px;
+  color: var(--accent2);
+  text-align: center;
+}
+
+/* Grid replacement: Flex for proper wrapping & centering */
 .skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;  /* center the cards in each row */
+  gap: 20px;                /* space between cards */
   max-width: 800px;
   margin: 0 auto;
 }
+
 .skill {
-  background: #0a192f;
-  border: 1px solid #233554;
+  background: var(--bg-main);
+  border: 1px solid var(--border);
   border-radius: 10px;
   padding: 15px;
+  width: 120px;          /* base card width */
+  flex: 0 1 120px;       /* flexible for wrapping */
   transition: transform 0.3s, box-shadow 0.3s;
+  text-align: center;
 }
 .skill:hover {
   transform: translateY(-6px);
@@ -284,13 +312,13 @@ section.visible .skills {
   margin-bottom: 6px;
 }
 .skill p {
-  color: #ccd6f6;
+  color: var(--text-main);
   font-size: 15px;
 }
 
 /* === Projects === */
 .projects {
-  background: #112240;
+  background: var(--bg-secondary);
   text-align: center;
   padding: 80px 40px;
   display: block;
@@ -320,8 +348,8 @@ section.visible .projects {
 .project-card {
   position: relative;
   overflow: hidden;
-  background: #0a192f;
-  border: 1px solid #233554;
+  background: var(--bg-main);
+  border: 1px solid var(--border);
   border-radius: 15px;
   width: 250px;
   aspect-ratio: 1/1;
@@ -355,7 +383,7 @@ section.visible .projects {
   margin-bottom: 10px;
 }
 .project-info p {
-  color: #a8b2d1;
+  color: var(--text-secondary);
   font-size: 14px;
   max-width: 220px;
   margin: 0 auto;
@@ -370,7 +398,7 @@ section.visible .projects {
 /* === Contact === */
 .contact {
   padding: 60px 40px;
-  background: #0a192f;
+  background: var(--bg-main);
   text-align: center;
   display: block;
   width: 100%;
@@ -397,17 +425,17 @@ section.visible .contact {
   max-width: 450px;
   margin: 0 auto;
   border-radius: 12px;
-  background: #112240;
+  background: var(--bg-secondary);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
 }
 .contact input,
 .contact textarea {
   width: 100%;
   padding: 10px 14px;
-  border: 1px solid #233554;
+  border: 1px solid var(--border);
   border-radius: 8px;
-  background: #0a192f;
-  color: #ccd6f6;
+  background: var(--bg-main);
+  color: var(--text-main);
   font-size: 15px;
 }
 .contact input:focus,
@@ -418,7 +446,7 @@ section.visible .contact {
 }
 .contact button {
   background: #64ffda;
-  color: #0a192f;
+  color: var(--bg-main);
   border: none;
   padding: 10px 25px;
   border-radius: 8px;
@@ -442,8 +470,8 @@ section.visible .contact {
 
 /* === Footer === */
 footer {
-  background: #112040;
-  color: #ccd6f6;
+  background: var(--bg-secondary);
+  color: var(--text-main);
   padding: 40px 60px;
   text-align: center;
   display: block;
@@ -457,7 +485,7 @@ footer .social-links {
   margin-bottom: 20px;
 }
 footer .social-links a {
-  color: #ccd6f6;
+  color: var(--text-main);
   font-size: 20px;
   transition: color 0.3s, transform 0.3s;
 }
@@ -476,7 +504,7 @@ footer p {
   position: fixed;
   bottom: 30px;
   right: 30px;
-  background: #112240;
+  background: var(--bg-secondary);
   color: #64ffda;
   padding: 15px 20px;
   border-radius: 10px;
@@ -497,7 +525,7 @@ footer p {
 }
 .toast.success {
   background: #64ffda;
-  color: #0a192f;
+  color: var(--bg-main);
 }
 
 /* === Responsive Styles === */
@@ -549,7 +577,7 @@ footer p {
     position: absolute;
     top: 60px; 
     right: 5%;
-    background-color: #112240;
+    background-color: var(--bg-secondary);
     border-radius: 8px;
     padding: 10px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.3);
@@ -573,4 +601,46 @@ footer p {
   .nav-links a {
     margin: 10px 0;
   }
+}
+.input-group {
+  position: relative;
+  margin-bottom: 20px;
+}
+.input-group {
+  position: relative;
+  width: 100%; /* 🔥 keeps same width */
+}
+
+.input-group input,
+.input-group textarea {
+  width: 100%; /* 🔥 VERY IMPORTANT */
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg-main);
+  color: var(--text-main);
+  font-size: 15px;
+}
+
+/* Label */
+.input-group label {
+  position: absolute;
+  left: 14px;
+  top: 12px;
+  color: var(--text-secondary);
+  font-size: 14px;
+  pointer-events: none;
+  transition: 0.3s ease;
+  background: var(--bg-main);
+  padding: 0 5px;
+}
+
+/* Floating effect */
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label,
+.input-group textarea:focus + label,
+.input-group textarea:not(:placeholder-shown) + label  {
+  top: -8px;
+  font-size: 12px;
+  color: var(--accent);
 }
