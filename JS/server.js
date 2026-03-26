@@ -34,7 +34,7 @@ app.post("/api/contact", async (req, res) => {
   try {
     const data = await resend.emails.send({
       from: 'onboarding@resend.dev', // Default sender for Resend free tier
-      to: 'your-email@gmail.com',     // REPLACE with your actual Gmail address
+      to: 'iamdevelopermaddy@gmail.com',     // REPLACE with your actual Gmail address
       subject: `📩 New Message from ${name}`,
       html: `
         <h3>Hey Madhavan 👋,</h3>
