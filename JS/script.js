@@ -38,12 +38,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const sendingToast = showToast("⏳ Sending message...", "info");
 
     try {
-      const response = await fetch("http://localhost:5000/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, contact, message }),
-      });
-
+      const response = await fetch(
+        "https://personalportfolio-1-6dbw.onrender.com/api/contact",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, email, contact, message }),
+        },
+      );
       const data = await response.json();
 
       sendingToast.remove(); // Remove sending toast
@@ -62,56 +64,55 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* === Scroll-triggered Section Animations === */
-const sections = document.querySelectorAll("section");
+  const sections = document.querySelectorAll("section");
 
-function animateSections() {
-  sections.forEach(section => {
-    if (section.id === "introduction") {
-      section.classList.add("visible");
-      return;
-    }
-    const rect = section.getBoundingClientRect();
-    if (rect.top < window.innerHeight && rect.bottom > 0) {
-      section.classList.add("visible");
-    } else {
-      section.classList.remove("visible");
-    }
-  });
-}
+  function animateSections() {
+    sections.forEach((section) => {
+      if (section.id === "introduction") {
+        section.classList.add("visible");
+        return;
+      }
+      const rect = section.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        section.classList.add("visible");
+      } else {
+        section.classList.remove("visible");
+      }
+    });
+  }
 
-// Run on scroll
-window.addEventListener("scroll", animateSections);
+  // Run on scroll
+  window.addEventListener("scroll", animateSections);
 
-// Run once immediately (DOM ready)
-animateSections();
-
-// Run once on full load (images/videos loaded) for mobile reliability and force scroll to top
-window.addEventListener("load", () => {
-  // Disable browser’s automatic scroll restoration
-  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-
-  // Scroll to top
-  window.scrollTo(0, 0);
-
-  // Animate sections after scrolling to top
+  // Run once immediately (DOM ready)
   animateSections();
-});
 
+  // Run once on full load (images/videos loaded) for mobile reliability and force scroll to top
+  window.addEventListener("load", () => {
+    // Disable browser’s automatic scroll restoration
+    if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+
+    // Scroll to top
+    window.scrollTo(0, 0);
+
+    // Animate sections after scrolling to top
+    animateSections();
+  });
 
   /* === Mobile Navbar Toggle === */
-  const menuToggle = document.getElementById('mobile-menu');
-  const navMenu = document.querySelector('.nav-links');
+  const menuToggle = document.getElementById("mobile-menu");
+  const navMenu = document.querySelector(".nav-links");
 
   if (menuToggle) {
-    menuToggle.addEventListener('click', () => {
-      navMenu.classList.toggle('active');      // show/hide menu
-      menuToggle.classList.toggle('animate');  // toggle animation
+    menuToggle.addEventListener("click", () => {
+      navMenu.classList.toggle("active"); // show/hide menu
+      menuToggle.classList.toggle("animate"); // toggle animation
     });
   }
 
   /* === Smooth Scroll for Nav Links === */
   const navLinks = document.querySelectorAll(".navigation a[href^='#']");
-  navLinks.forEach(link => {
+  navLinks.forEach((link) => {
     link.addEventListener("click", (e) => {
       e.preventDefault();
       const targetId = link.getAttribute("href").substring(1);
@@ -121,9 +122,9 @@ window.addEventListener("load", () => {
       }
 
       // Close mobile menu when a link is clicked
-      if (navMenu.classList.contains('active')) {
-        navMenu.classList.remove('active');
-        menuToggle.classList.remove('animate');
+      if (navMenu.classList.contains("active")) {
+        navMenu.classList.remove("active");
+        menuToggle.classList.remove("animate");
       }
     });
   });

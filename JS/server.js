@@ -12,7 +12,12 @@ const app = express();
 const PORT = 5000;
 
 // === Middleware ===
-app.use(cors());
+app.use(cors({
+  origin: [
+    "http://localhost:5173",                 // local dev
+    "https://personalportfolio-1-6dbw.onrender.com/"      // deployed frontend
+  ]
+}));
 app.use(bodyParser.json());
 
 // ✅ Serve static files (HTML, CSS, JS, images)
