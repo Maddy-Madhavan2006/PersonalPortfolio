@@ -5,10 +5,6 @@
   "engines": {
     "node": "20.x"
   },
-  "scripts": {
-    "start": "node JS/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
