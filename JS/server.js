@@ -1,22 +1,27 @@
+// === Load environment variables ===
 require("dotenv").config();
 const path = require("path");
 const express = require("express");
 const cors = require("cors");
-const { Resend } = require("resend"); // Updated to use Resend
+const { Resend } = require("resend"); // ✅ Resend Imported
 
 const app = express();
-const resend = new Resend(process.env.RESEND_API_KEY); // Use your new API Key
+
+// ✅ Use the API Key from your .env (local) or Vercel Settings (production)
+const resend = new Resend(process.env.RESEND_API_KEY); 
 const PORT = process.env.PORT || 5000;
 
 // === Middleware ===
-app.use(cors()); // Simplified for easier freelancing
+// Simplified CORS since frontend and backend are on the same Vercel domain
+app.use(cors());
 app.use(express.json());
 
-// ✅ Serve static files from the root directory
+// ✅ CRITICAL PATHING: This is what keeps your Intro/Sections working perfectly
+// We are in 'JS/', so '..' goes up to the main Portfolio folder
 const rootPath = path.resolve(__dirname, "..");
 app.use(express.static(rootPath));
 
-// ✅ Route for homepage
+// ✅ Route for homepage - ensures index.html is served correctly
 app.get("/", (req, res) => {
   res.sendFile(path.join(rootPath, "index.html"));
 });
@@ -25,7 +30,7 @@ app.get("/", (req, res) => {
 app.post("/api/contact", async (req, res) => {
   const { name, email, contact, message } = req.body;
 
-  // 1. Validation
+  // 1. Basic Validation
   if (!name || !email || !message) {
     return res.status(400).json({ error: "Missing required fields." });
   }
@@ -33,40 +38,49 @@ app.post("/api/contact", async (req, res) => {
   // 2. Send Email with Resend
   try {
     const data = await resend.emails.send({
-      from: 'onboarding@resend.dev', // Default sender for Resend free tier
-      to: 'iamdevelopermaddy@gmail.com',     // REPLACE with your actual Gmail address
+      from: 'onboarding@resend.dev', // Must be this for free tier
+      to: 'maddymadhavan347@gmail.com', // Your verified destination
       subject: `📩 New Message from ${name}`,
       html: `
-        <h3>Hey Madhavan 👋,</h3>
-        <p>You got a new message from your portfolio:</p>
-        <ul>
-          <li><strong>Name:</strong> ${name}</li>
-          <li><strong>Email:</strong> ${email}</li>
-          <li><strong>Phone:</strong> ${contact || "Not provided"}</li>
-        </ul>
-        <p><strong>Message:</strong><br>${message}</p>
+        <div style="font-family: sans-serif; line-height: 1.6; color: #333;">
+          <h2 style="color: #007bff;">Hey Madhavan 👋,</h2>
+          <p>You received a new message from your portfolio contact form:</p>
+          <hr>
+          <p><strong>👤 Name:</strong> ${name}</p>
+          <p><strong>📧 Email:</strong> ${email}</p>
+          <p><strong>📞 Contact:</strong> ${contact || "Not provided"}</p>
+          <p><strong>💬 Message:</strong></p>
+          <blockquote style="background: #f9f9f9; border-left: 5px solid #ccc; padding: 10px;">
+            ${message}
+          </blockquote>
+          <hr>
+          <p style="font-size: 0.8em; color: #777;">Sent via Resend + Vercel</p>
+        </div>
       `,
     });
 
     console.log("✅ Email sent successfully:", data.id);
-    return res.status(200).json({ 
-      success: true, 
-      message: "🚀 Message delivered successfully!" 
+
+    return res.status(200).json({
+      success: true,
+      message: "🚀 Message delivered successfully!",
     });
+
   } catch (error) {
     console.error("❌ Resend Error:", error);
-    return res.status(500).json({ 
-      error: "Failed to send email. Please try again later." 
+    return res.status(500).json({
+      error: "Failed to send email. Please try again later.",
     });
   }
 });
 
-// For Vercel compatibility
+// ✅ VERCEL REQUIREMENT: Export the app
 module.exports = app;
 
-// Local testing
+// === Local Startup ===
+// Only runs 'app.listen' if we are NOT on Vercel production
 if (process.env.NODE_ENV !== 'production') {
   app.listen(PORT, () => {
-    console.log(`🚀 Server running on http://localhost:${PORT}`);
+    console.log(`🚀 Server running on port ${PORT}`);
   });
 }
