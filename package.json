@@ -1,7 +1,7 @@
 {
   "name": "portfolio",
   "version": "1.0.0",
-  "main": "JS/server.js",
+  "main": "api/server.js",
   "engines": {
     "node": "20.x"
   },

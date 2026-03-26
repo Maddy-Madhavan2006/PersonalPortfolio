@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const sendingToast = showToast("⏳ Sending message...", "info");
 
     try {
-      const response = await fetch("/api/contact", {
+      const response = await fetch("/api/server", {
         method: "POST",
 
         headers: { "Content-Type": "application/json" },
