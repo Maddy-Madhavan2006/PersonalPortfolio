@@ -1,22 +1,18 @@
 {
   "name": "portfolio",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "JS/server.js",
+  "engines": {
+    "node": "20.x"
+  },
   "scripts": {
     "start": "node JS/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
   "dependencies": {
-    "body-parser": "^2.2.0",
     "cors": "^2.8.5",
-    "dotenv": "^17.2.3",
-    "express": "^5.1.0",
-    "mysql": "^2.18.1",
-    "nodemailer": "^7.0.10",
-    "resend": "^6.9.4"
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "resend": "^3.2.0"
   }
 }
