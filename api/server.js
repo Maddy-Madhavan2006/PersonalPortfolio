@@ -21,7 +21,7 @@ module.exports = async (req, res) => {
   try {
     const data = await resend.emails.send({
       from: 'onboarding@resend.dev', 
-      to: 'maddymadhavan347@gmail.com', 
+      to: 'iamdevelopermaddy@gmail.com', 
       subject: `📩 New Message from ${name}`,
       html: `
         <div style="font-family: sans-serif; line-height: 1.6; color: #333;">
