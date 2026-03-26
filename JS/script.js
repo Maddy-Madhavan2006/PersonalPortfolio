@@ -38,14 +38,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const sendingToast = showToast("⏳ Sending message...", "info");
 
     try {
-      const response = await fetch(
-        "https://personalportfolio-1-6dbw.onrender.com/api/contact",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ name, email, contact, message }),
-        },
-      );
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, contact, message }),
+      });
+
       const data = await response.json();
 
       sendingToast.remove(); // Remove sending toast
